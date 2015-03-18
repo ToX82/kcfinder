@@ -201,3 +201,26 @@ span.brace.opened, span.brace.closed {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
+
+/* crop plugin */
+.cropMask {
+    border: solid 3px #ff9000;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    z-index: 999;
+    width: 50%;
+    height: 50%;
+}
+
+.resizeMask {
+    background-color: #333;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    cursor: se-resize;
+    display: block;
+    right: -3px;
+    bottom: -3px;
+}

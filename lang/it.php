@@ -109,6 +109,7 @@ $lang = array(
     "Select Thumbnail" => "Seleziona miniatura",
     "Select Thumbnails" => "Seleziona miniature",
     "View" => "Vista",
+    "Crop" => "Ritaglia",
     "Download" => "Scarica",
     "Download files" => "Scarica files",
     "Clipboard" => "Clipboard",

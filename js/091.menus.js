@@ -244,10 +244,11 @@ _.menuFile = function(file, e) {
         }
 
         // VIEW IMAGE
-        if (data.thumb || data.smallThumb)
+        if (data.thumb || data.smallThumb) {
             _.menu.addItem("kcact:view", _.label("View"), function() {
                 _.viewImage(data);
             });
+        }
 
         // DOWNLOAD
         _.menu.addItem("kcact:download", _.label("Download"), function() {
@@ -280,6 +281,13 @@ _.menuFile = function(file, e) {
 
         if (_.access.files.rename || _.access.files['delete'])
             _.menu.addDivider();
+
+        // CROP IMAGE
+        if (data.thumb || data.smallThumb) {
+            _.menu.addItem("kcact:crop", _.label("Crop"), function() {
+                _.cropImage(data);
+            });
+        }
 
         // RENAME
         if (_.access.files.rename)

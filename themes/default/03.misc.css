@@ -276,6 +276,9 @@ a.denied:hover {
 #menu a[href="kcact:view"] span {
     background-image: url(img/icons/view.png);
 }
+#menu a[href="kcact:crop"] span {
+    background-image: url(img/icons/crop.png);
+}
 #menu a[href="kcact:cpcbd"] span {
     background-image: url(img/icons/copy.png);
 }
@@ -428,4 +431,10 @@ a.denied:hover {
 body.msie fieldset,
 body.trident.rv fieldset {
     border-radius: 0;
+}
+
+#imgToCrop {
+    opacity: 0 !important ;
+    position: absolute;
+    left: -15000px;
 }

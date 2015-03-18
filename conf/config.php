@@ -21,7 +21,7 @@ return array(
 
 // GENERAL SETTINGS
 
-    'disabled' => true,
+    'disabled' => false,
     'uploadURL' => "upload",
     'uploadDir' => "",
     'theme' => "default",

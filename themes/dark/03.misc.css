@@ -283,6 +283,9 @@ a.denied:hover {
 #menu a[href="kcact:view"] span {
     background-image: url(img/icons/view.png);
 }
+#menu a[href="kcact:crop"] span {
+    background-image: url(img/icons/crop.png);
+}
 #menu a[href="kcact:cpcbd"] span {
     background-image: url(img/icons/copy.png);
 }
