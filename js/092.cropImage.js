@@ -88,7 +88,7 @@ _.cropImage = function(data) {
                     buttons: [
                         {
                             text: _.label("Crop"),
-                            icons: {primary: "ui-icon-crop"},
+                            icons: {primary: "ui-icon-scissors"},
                             click: cropFunc
 
                         }, {
@@ -161,10 +161,18 @@ _.cropImage = function(data) {
 
             //create element for resize mask
             var resizeMask = document.createElement('div');
-            $(resizeMask).addClass('resizeMask').appendTo(cropMask);
-            var isResizing = false;
+            $(resizeMask).addClass('resizeMask ui-icon ui-icon-grip-diagonal-se').appendTo(cropMask);
+
+            //create element for size labels
+            var sizeLabel = document.createElement('div');
+            $(sizeLabel).addClass('sizeLabel').appendTo(cropMask);
+            setTimeout( function(){ 
+                $(sizeLabel).text($(cropMask).width() + "x" + $(cropMask).height());
+            }, 500 );
+
 
             //manage resize
+            var isResizing = false;
             $(resizeMask).mousedown(function() {
                 isResizing = true;
             });
@@ -244,28 +252,35 @@ _.cropImage = function(data) {
 
                 var result;
                 if (isDragging.target && isResizing === true) {
-                    result = isPositionValid();
                     //resize section
+                    result = isPositionValid();
+
+                    var newHeight = result.canRelY - parseInt($(cropMask).css("top"));
+                    var newWidth = result.canRelX - parseInt($(cropMask).css("left"));
                     isDragging.target.css({
-                        height: result.canRelY - parseInt($(cropMask).css("top")),
-                        width: result.canRelX - parseInt($(cropMask).css("left"))
+                        height: newHeight,
+                        width: newWidth
                     });
 
                     //manage outside positions
                     if (result.positionValid.maxY) {
                         var canvasY = $(cropper).offset().top;
-                        $(cropMask).css({height: i_h - ($(cropMask).offset().top - canvasY + result.maskBorder) + 'px'});
+                        newHeight = i_h - ($(cropMask).offset().top - canvasY + result.maskBorder);
+                        $(cropMask).css({height: newHeight + 'px'});
                     }
                     if (result.positionValid.maxX) {
                         var canvasX = $(cropper).offset().left;
-                        $(cropMask).css({width: i_w - ($(cropMask).offset().left - canvasX + result.maskBorder) + 'px'});
+                        newWidth = i_w - ($(cropMask).offset().left - canvasX + result.maskBorder);
+                        $(cropMask).css({width: newWidth + 'px'});
                     }
-                
+
+                    $(sizeLabel).text(parseInt(newWidth) + "x" + parseInt(newHeight));
+
 
                 } else if (isDragging.target && isResizing !== true) {
-                    result = isPositionValid();
-
                     //drag section
+
+                    result = isPositionValid();
                     if (result.positionValid.valid) {
                         isDragging.target.offset({
                             top: result.newY,

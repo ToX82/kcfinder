@@ -215,12 +215,22 @@ span.brace.opened, span.brace.closed {
 }
 
 .resizeMask {
-    background-color: #333;
     position: absolute;
-    height: 20px;
-    width: 20px;
     cursor: se-resize;
+    right: -1px;
+    bottom: -1px;
+    color: #000;
+}
+
+.sizeLabel {
+    background: #eee;
+    background: rgba(200,200,200,0.5);
+    color: #333;
     display: block;
-    right: -3px;
-    bottom: -3px;
+    height: auto;
+    padding: 3px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
 }
